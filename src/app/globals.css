@@ -1,0 +1,132 @@
+/* Font Import */
+@import url("https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap");
+
+:root {
+  --color-text-primary: #000000;
+  --color-text-secondary: #605f5f;
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #000000;
+  --color-bg-accent: #f5f5f5;
+  --color-border: #e5e5e5;
+
+  --font-family-primary: "Switzer", sans-serif;
+
+  --spacing-container: 24px;
+  --width-sidebar: 320px;
+
+  /* Responsive Typography Base Values */
+  --text-hero-size: 34px;
+  --text-h1-size: 48px;
+  --text-h2-size: 40px;
+  --text-h3-size: 32px;
+  --padding-section: 120px 60px;
+}
+
+@media (max-width: 1024px) {
+  :root {
+    /* --width-sidebar: 0px; Removed to allow sidebar to have width when opened */
+    --padding-section: 80px 40px;
+    --text-hero-size: 28px;
+    --text-h1-size: 36px;
+    --text-h2-size: 32px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --padding-section: 60px 24px;
+    --text-hero-size: 24px;
+    --text-h1-size: 32px;
+    --text-h2-size: 28px;
+    --text-h3-size: 24px;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family-primary);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Typography Utilities */
+.text-hero {
+  font-size: var(--text-hero-size);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text-secondary);
+}
+
+.text-body {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.text-label {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+/* Layout Utilities */
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.scroll-container {
+  flex: 1;
+  margin-left: var(--width-sidebar); /* Matches fixed sidebar width */
+  min-width: 0;
+  transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .scroll-container {
+    margin-left: 0;
+    padding-top: 80px; /* Space for mobile header */
+  }
+}
+
+/* Gradient Background Effect */
+.bg-gradient-corner {
+  position: fixed;
+  top: -20%;
+  right: -10%;
+  width: 50vw;
+  height: 50vw;
+  background: radial-gradient(
+    circle,
+    rgba(200, 220, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  z-index: -1;
+  pointer-events: none;
+  filter: blur(60px);
+}
