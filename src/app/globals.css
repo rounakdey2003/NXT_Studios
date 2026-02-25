@@ -1,6 +1,10 @@
 /* Font Import */
 @import url("https://api.fontshare.com/v2/css?f[]=switzer@300,400,500,600,700&display=swap");
 
+@import "tailwindcss";
+@import "./components.css";
+@import "./animations.css";
+
 :root {
   --color-text-primary: #000000;
   --color-text-secondary: #605f5f;
@@ -48,6 +52,10 @@
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {

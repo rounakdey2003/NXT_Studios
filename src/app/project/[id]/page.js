@@ -1,193 +1,162 @@
-import Link from 'next/link';
+'use client';
+
 import { ArrowLeft } from 'lucide-react';
 import Footer from '@/components/Footer';
+import Image from 'next/image';
+import AnimateOnScroll from '@/components/AnimateOnScroll';
+import { use } from 'react';
 
-const ProjectDetail = async ({ params }) => {
-    const { id } = await params;
+const ProjectDetail = ({ params }) => {
+    const { id } = use(params);
     
-    // Default content for demo
-    const project = {
+    // Project-specific data
+    const projectData = {
+        'coursesurf': {
+            title: 'COURSE SURF',
+            type: 'Web Application',
+            client: 'Course Surf Inc.',
+            year: '2025',
+            timeline: '10 Weeks',
+            description: 'Course Surf is an innovative online learning platform designed to help students discover and navigate through courses effortlessly. We crafted a seamless user experience with intuitive course discovery features.',
+            images: [
+                '/images/course_surf_image/course1.png',
+                '/images/course_surf_image/course2.png',
+                '/images/course_surf_image/course3.png',
+                '/images/course_surf_image/course4.png'
+            ]
+        },
+        'zencampus': {
+            title: 'ZEN CAMPUS',
+            type: 'Brand Identity',
+            client: 'Zen Campus Co.',
+            year: '2025',
+            timeline: '8 Weeks',
+            description: 'Zen Campus reimagines the university experience with a focus on mindfulness and well-being. We developed a calming visual identity that reflects the peaceful learning environment they provide.',
+            images: [
+                '/images/zen_campus_image/campus1.png',
+                '/images/zen_campus_image/campus2.png',
+                '/images/zen_campus_image/campus3.png',
+                '/images/zen_campus_image/campus4.png'
+            ]
+        }
+    };
+
+    // Get project data or use defaults
+    const project = projectData[id] || {
         title: id ? id.toUpperCase() : "PROJECT",
         type: "Brand Identity",
         client: `${id ? id.charAt(0).toUpperCase() + id.slice(1) : "Client"} Co.`,
         year: "2025",
         timeline: "8 Weeks",
-        description: "We partnered with this forward-thinking brand to redefine their digital presence. The goal was to create a visual language that speaks to modern consumers while retaining the core values of the company."
+        description: "We partnered with this forward-thinking brand to redefine their digital presence. The goal was to create a visual language that speaks to modern consumers while retaining the core values of the company.",
+        images: []
     };
+
+    const hasImages = project.images && project.images.length >= 4;
 
     return (
         <div className="project-detail">
             <div className="pd-container">
                 {/* Left Media Scroll */}
                 <div className="pd-media">
-                     <div className="pd-image-large" style={{backgroundImage: 'linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%)'}}></div>
+                     <AnimateOnScroll animation="scale">
+                         {hasImages ? (
+                            <div className="pd-image-large image-reveal">
+                                <Image src={project.images[0]} alt={`${project.title} image 1`} fill className="object-cover" />
+                            </div>
+                         ) : (
+                            <div className="pd-image-large bg-linear-to-t from-[#cfd9df] to-[#e2ebf0]"></div>
+                         )}
+                     </AnimateOnScroll>
                      <div className="pd-grid">
-                        <div className="pd-image-sq" style={{backgroundImage: 'linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%)'}}></div>
-                        <div className="pd-image-sq" style={{backgroundImage: 'linear-gradient(to top, #accbee 0%, #e7f0fd 100%)'}}></div>
+                        {hasImages ? (
+                            <>
+                                <AnimateOnScroll animation="slide-up" delay={0.1}>
+                                    <div className="pd-image-sq image-reveal">
+                                        <Image src={project.images[1]} alt={`${project.title} image 2`} fill className="object-cover" />
+                                    </div>
+                                </AnimateOnScroll>
+                                <AnimateOnScroll animation="slide-up" delay={0.2}>
+                                    <div className="pd-image-sq image-reveal">
+                                        <Image src={project.images[2]} alt={`${project.title} image 3`} fill className="object-cover" />
+                                    </div>
+                                </AnimateOnScroll>
+                            </>
+                        ) : (
+                            <>
+                                <AnimateOnScroll animation="slide-up" delay={0.1}>
+                                    <div className="pd-image-sq bg-linear-to-br from-[#fdfbfb] to-[#ebedee]"></div>
+                                </AnimateOnScroll>
+                                <AnimateOnScroll animation="slide-up" delay={0.2}>
+                                    <div className="pd-image-sq bg-linear-to-t from-[#accbee] to-[#e7f0fd]"></div>
+                                </AnimateOnScroll>
+                            </>
+                        )}
                      </div>
-                     <div className="pd-image-large" style={{backgroundImage: 'linear-gradient(to top, #fff1eb 0%, #ace0f9 100%)'}}></div>
+                     <AnimateOnScroll animation="scale">
+                         {hasImages ? (
+                            <div className="pd-image-large image-reveal">
+                                <Image src={project.images[3]} alt={`${project.title} image 4`} fill className="object-cover" />
+                            </div>
+                         ) : (
+                            <div className="pd-image-large bg-linear-to-t from-[#fff1eb] to-[#ace0f9]"></div>
+                         )}
+                     </AnimateOnScroll>
                 </div>
 
                 {/* Right Sticky Info */}
                 <div className="pd-info">
                     <div className="pd-sticky-wrapper">
-                        <Link href="/" className="back-link">
-                            <ArrowLeft size={16} /> View all
-                        </Link>
+                        <AnimateOnScroll animation="fade">
+                            <a href="/" className="back-link">
+                                <ArrowLeft size={16} /> View all
+                            </a>
+                        </AnimateOnScroll>
                         
-                        <h1 className="pd-title">{project.title}</h1>
-                        <p className="pd-desc">{project.description}</p>
+                        <AnimateOnScroll animation="slide-up" delay={0.1}>
+                            <h1 className="pd-title">{project.title}</h1>
+                        </AnimateOnScroll>
+                        <AnimateOnScroll animation="slide-up" delay={0.15}>
+                            <p className="pd-desc">{project.description}</p>
+                        </AnimateOnScroll>
                         
-                        <div className="pd-meta">
-                            <div className="meta-row">
-                                <span className="meta-label">Year</span>
-                                <span className="meta-val">{project.year}</span>
+                        <AnimateOnScroll animation="slide-up" delay={0.2}>
+                            <div className="pd-meta">
+                                <div className="meta-row">
+                                    <span className="meta-label">Year</span>
+                                    <span className="meta-val">{project.year}</span>
+                                </div>
+                                <div className="meta-row">
+                                    <span className="meta-label">Type</span>
+                                    <span className="meta-val">{project.type}</span>
+                                </div>
+                                <div className="meta-row">
+                                    <span className="meta-label">Client</span>
+                                    <span className="meta-val">{project.client}</span>
+                                </div>
+                                <div className="meta-row">
+                                    <span className="meta-label">Timeline</span>
+                                    <span className="meta-val">{project.timeline}</span>
+                                </div>
                             </div>
-                            <div className="meta-row">
-                                <span className="meta-label">Type</span>
-                                <span className="meta-val">{project.type}</span>
-                            </div>
-                            <div className="meta-row">
-                                <span className="meta-label">Client</span>
-                                <span className="meta-val">{project.client}</span>
-                            </div>
-                            <div className="meta-row">
-                                <span className="meta-label">Timeline</span>
-                                <span className="meta-val">{project.timeline}</span>
-                            </div>
-                        </div>
+                        </AnimateOnScroll>
                     </div>
                 </div>
             </div>
 
             <section className="pd-case-study">
-                <h2>Designing a seamless experience</h2>
-                <p>
-                    The challenge was to merge functionality with aesthetics. We started by auditing the existing brand assets and identifying gaps. 
-                    The new design system focuses on clarity, bold typography, and a unified color palette that scales across devices.
-                </p>
+                <AnimateOnScroll animation="slide-up">
+                    <h2>Designing a seamless experience</h2>
+                </AnimateOnScroll>
+                <AnimateOnScroll animation="slide-up" delay={0.1}>
+                    <p>
+                        The challenge was to merge functionality with aesthetics. We started by auditing the existing brand assets and identifying gaps. 
+                        The new design system focuses on clarity, bold typography, and a unified color palette that scales across devices.
+                    </p>
+                </AnimateOnScroll>
             </section>
 
             <Footer />
-
-            <style>{`
-                .pd-container {
-                    display: grid;
-                    grid-template-columns: 1.5fr 1fr;
-                    gap: 60px;
-                    padding: 120px 60px 80px;
-                }
-
-                .pd-media {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 40px;
-                }
-
-                .pd-image-large {
-                    width: 100%;
-                    aspect-ratio: 16/9;
-                    background-color: #eee;
-                    border-radius: 4px;
-                }
-
-                .pd-grid {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 40px;
-                }
-
-                .pd-image-sq {
-                    width: 100%;
-                    aspect-ratio: 1/1;
-                    background-color: #eee;
-                    border-radius: 4px;
-                }
-
-                .pd-sticky-wrapper {
-                    position: sticky;
-                    top: 40px;
-                }
-
-                .back-link {
-                    display: inline-flex;
-                    align-items: center;
-                    gap: 8px;
-                    font-size: 14px;
-                    font-weight: 500;
-                    margin-bottom: 40px;
-                    opacity: 0.6;
-                }
-
-                .back-link:hover {
-                    opacity: 1;
-                }
-
-                .pd-title {
-                    font-size: 48px;
-                    margin-bottom: 24px;
-                    font-weight: 500;
-                }
-
-                .pd-desc {
-                    font-size: 18px;
-                    line-height: 1.6;
-                    color: var(--color-text-secondary);
-                    margin-bottom: 40px;
-                }
-
-                .pd-meta {
-                    display: flex;
-                    flex-direction: column;
-                    border-top: 1px solid var(--color-border);
-                }
-
-                .meta-row {
-                    display: flex;
-                    justify-content: space-between;
-                    padding: 16px 0;
-                    border-bottom: 1px solid var(--color-border);
-                    font-size: 14px;
-                }
-
-                .meta-label {
-                    color: var(--color-text-secondary);
-                }
-
-                .meta-val {
-                    font-weight: 500;
-                }
-
-                .pd-case-study {
-                    padding: 0 60px 120px;
-                    max-width: 800px;
-                }
-
-                .pd-case-study h2 {
-                    font-size: 32px;
-                    margin-bottom: 24px;
-                    font-weight: 500;
-                }
-
-                .pd-case-study p {
-                    font-size: 18px;
-                    line-height: 1.6;
-                    color: var(--color-text-secondary);
-                }
-
-                @media (max-width: 1024px) {
-                    .pd-container {
-                        grid-template-columns: 1fr;
-                        padding: 80px 24px;
-                    }
-                    .pd-sticky-wrapper {
-                        position: static;
-                    }
-                    .pd-case-study {
-                        padding: 0 24px 80px;
-                    }
-                }
-            `}</style>
         </div>
     );
 };
