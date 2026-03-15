@@ -1,3 +1,5 @@
+Link: https://nxtstudio.in
+---
 # NXT Studio
 
 NXT Studio is a digital studio offering web design, branding, and creative strategy to help brands stand out with modern, seamless experiences. Since 2025, the studio has partnered with ambitious businesses to bring bold ideas to life through design that goes beyond aesthetics.
@@ -36,30 +38,6 @@ NXT Studio is a digital studio offering web design, branding, and creative strat
 - **Sagolsem Akash** — Designer. Designs digital experiences that connect people and products.
 - **Vikram Neerugatti** — Project Manager. Ensures projects run smoothly and deliver on time.
 
-## Studio stats
-
-- **120+** projects delivered
-- **15+** industries served
-- **98%** client satisfaction
-- **7+** years of experience
-
-## Awards
-
-- 2025 — Design Leadership and Impact Award
-- 2024 — International Branding Excellence Award
-- 2022 — Outstanding Web Design Recognition
-- 2019 — Excellence in Brand Identity Design
-- 2016 — Best Emerging Studio Award
-
-## Testimonials
-
-- “NXT’s innovative solutions accelerated our digital transformation, delivering measurable results.” — **Vikram Neerugatti**, Product Manager, NXT Studios
-- “Partnering with NXT gave us a competitive edge and a seamless user experience across platforms.” — **Rounak Dey**, Development Lead, Infosys
-
-## Clients
-
-NaviAI, NovaTech, BoxMedia, VitaHealth, Pluto Inc, Lumora
-
 ## FAQs
 
 - **What kind of projects does NXT Studio work on?** Branding, web design, product design, and creative campaigns tailored to client needs.
@@ -72,13 +50,12 @@ NaviAI, NovaTech, BoxMedia, VitaHealth, Pluto Inc, Lumora
 ## Contact
 
 - **Office:** Bangalore, Karnataka, India
-- **Phone:** +91 9876543210
-- **Email:** hello@nxtstudio.com
+- **Phone:** +91 9876******
+- **Email:** info@nxtstudio.in
 
 ## Socials
 
 - Instagram
-- LinkedIn
 - X (Twitter)
 
 ## Website structure
